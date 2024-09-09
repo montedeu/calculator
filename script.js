@@ -1,6 +1,5 @@
-(function(document, window, undefined) {
-
-    "use strict"
+window.onload = function() {
+    const display = document.querySelector("#display");
 
     function add(firstNumber, secondNumber) {
         return firstNumber + secondNumber;
@@ -21,24 +20,34 @@
     function operate(firstNumber, operate, secondNumber) {
         switch (operate) {
             case '+':
-                add(firstNumber, secondNumber);
-                break;
+                return add(firstNumber, secondNumber);
             case '-':
-                subtract(firstNumber, secondNumber);
-                break;
+                return subtract(firstNumber, secondNumber);
             case '*':
-                multiply(firstNumber, secondNumber);
-                break;
+                return multiply(firstNumber, secondNumber);
             case '/':
-                divide(firstNumber, secondNumber);
-                break;
+                return divide(firstNumber, secondNumber);
             default:
                 alert("Invalid value");
         }
     }
 
+    function populateDisplay(value) {
+        display.value += value;
+    }
+
+    let digitButtons = document.querySelectorAll(".digit-button");
+    digitButtons.forEach((element) => {
+        element.addEventListener('click', () => {
+            populateDisplay(element.value)
+        });
+        console.log(element.value);
+    });
+
     let firstNumber;
     let secondNumber;
     let operator;
 
-})(document, window)
+    console.log(operate(2,'+',2));
+
+}
