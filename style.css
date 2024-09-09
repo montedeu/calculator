@@ -1,0 +1,35 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 20px;
+    font-size: 20px;
+    background-color: #0099ff;
+    color: white;
+    border: 1px solid lightcyan;
+    border-radius: 15px;
+    height: 60px;
+    width: 60px;
+}
+
+input {
+    padding: 20px;
+    background-color: white;
+    font-size: 20px;
+    width: 146px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.calculator-container {
+    width: 190px;
+    border: 2px solid black;
+    padding: 20px;
+    background-color: lightcyan;
+    border-radius: 20px;
+}

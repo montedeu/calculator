@@ -1,8 +1,18 @@
 window.onload = function() {
     const display = document.querySelector("#display");
+    const digitButtons = document.querySelectorAll(".digit-button");
+    const addButton = document.querySelector(".add-button");
+    const subtractButton = document.querySelector(".subtract-button");
+    const multiplyButton = document.querySelector(".multiply-button");
+    const divideButton = document.querySelector(".divide-button");
+    const equalsButton = document.querySelector(".equals-button");
+    const clearButton = document.querySelector(".clear-button");
+    let firstNumber;
+    let operator;
+    let secondNumber;
 
     function add(firstNumber, secondNumber) {
-        return firstNumber + secondNumber;
+        return parseInt(firstNumber) + parseInt(secondNumber);
     }
 
     function subtract(firstNumber, secondNumber) {
@@ -36,18 +46,44 @@ window.onload = function() {
         display.value += value;
     }
 
-    let digitButtons = document.querySelectorAll(".digit-button");
+    function saveDisplayValue() {
+        let number = display.value;
+        display.value = '';
+        return number;
+    }
+
     digitButtons.forEach((element) => {
         element.addEventListener('click', () => {
-            populateDisplay(element.value)
+            populateDisplay(element.value);
         });
-        console.log(element.value);
     });
 
-    let firstNumber;
-    let secondNumber;
-    let operator;
+    addButton.addEventListener('click', () => {
+        firstNumber = saveDisplayValue();
+        operator = '+';
+    });
 
-    console.log(operate(2,'+',2));
+    subtractButton.addEventListener('click', () => {
+        firstNumber = saveDisplayValue();
+        operator = '-';
+    });
+    
+    multiplyButton.addEventListener('click', () => {
+        firstNumber = saveDisplayValue();
+        operator = '*';
+    });
 
+    divideButton.addEventListener('click', () => {
+        firstNumber = saveDisplayValue();
+        operator = '/';
+    });
+
+    equalsButton.addEventListener('click', () => {
+        secondNumber = saveDisplayValue();
+        display.value = operate(firstNumber, operator, secondNumber);
+    });
+
+    clearButton.addEventListener('click', () => {
+        display.value = '';
+    });
 }
